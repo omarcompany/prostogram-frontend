@@ -1,22 +1,6 @@
-function App(): JSX.Element {
+export function Main(): JSX.Element {
   return (
-    <main>
-      <header className="header">
-        <a
-          className="header-logo"
-          href=""
-          target="_top"
-          rel="noopener noreferrer"
-        >
-          <img
-            className="header-logo-image"
-            src="images/logo.svg"
-            alt="logotype"
-          />
-        </a>
-        <div className="header-line"></div>
-      </header>
-
+    <>
       <section className="profile">
         <div className="avatar">
           <img className="avatar-image" src="images/avatar.jpg" alt="avatar" />
@@ -117,12 +101,6 @@ function App(): JSX.Element {
           </form>
         </div>
       </div>
-
-      <footer className="footer">
-        <p className="footer-sign">@2020 Mesto Russia</p>
-      </footer>
-    </main>
+    </>
   );
 }
-
-export default App;
