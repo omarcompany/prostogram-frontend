@@ -1,4 +1,15 @@
+import { useState } from 'react';
+import { profileInfo } from '../mocks/profile-info';
+import { PopupEdit } from './popup-edit';
+
 export function Main(): JSX.Element {
+  const [isOpened, setIsOpened] = useState(false);
+
+  const onCloseHandler = () => {
+    setIsOpened(!isOpened);
+  };
+  const { name, description } = profileInfo;
+
   return (
     <>
       <section className="profile">
@@ -6,16 +17,24 @@ export function Main(): JSX.Element {
           <img className="avatar-image" src="images/avatar.jpg" alt="avatar" />
         </div>
         <div className="profile-info">
-          <h2 className="profile-info-name">Jacques-Yves Cousteau</h2>
-          <button className="button edit-profile-button" type="button">
+          <h2 className="profile-info-name">{name}</h2>
+          <button
+            className="button edit-profile-button"
+            type="button"
+            onClick={onCloseHandler}
+          >
             <img src="images/edit-button.svg" alt="edit" />
           </button>
-          <p className="profile-info-description">The ocean explorer</p>
+          <p className="profile-info-description">{description}</p>
         </div>
         <button className="button add-button" type="button">
           +
         </button>
       </section>
+
+      {isOpened && (
+        <PopupEdit profileInfo={profileInfo} onClosePopup={onCloseHandler} />
+      )}
 
       <section className="content">
         <ul className="elements">
@@ -63,44 +82,6 @@ export function Main(): JSX.Element {
           </li>
         </ul>
       </section>
-      <div className="edit-wrapper">
-        <div className="edit">
-          <button
-            className="button edit-close-button"
-            type="button"
-            title="Close"
-          ></button>
-          <form className="edit-form" action="#" method="post">
-            <p className="edit-form-header">Edit profile</p>
-
-            <label className="edit-form-label">
-              <input
-                className="edit-form-input edit-form-name"
-                type="text"
-                id="name"
-                name="profile_info_name"
-              />
-            </label>
-
-            <label className="edit-form-label">
-              <input
-                className="edit-form-input edit-form-description"
-                type="text"
-                id="description"
-                name="profile_info_description"
-              />
-            </label>
-
-            <input
-              className="button edit-form-submit"
-              type="submit"
-              id="submit"
-              name="profile_info_submit"
-              value="Save"
-            />
-          </form>
-        </div>
-      </div>
     </>
   );
 }
