@@ -1,18 +1,21 @@
 import { FormEvent, useRef } from 'react';
+import { avatarInfo } from '../../mocks/avatar-info';
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
 
-interface IPopupEditAvatarProps {
-  onClose: () => void;
-}
-
 export function PopupEditAvatar({
   onClose,
-}: IPopupEditAvatarProps): JSX.Element {
+}: {
+  onClose: () => void;
+}): JSX.Element {
   const avatarRef = useRef<HTMLInputElement | null>(null);
+
+  const url = avatarInfo.url;
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    avatarInfo.url = avatarRef.current?.value || '';
 
     onClose();
   };
@@ -23,7 +26,7 @@ export function PopupEditAvatar({
       textSubmit={'Save'}
       onClose={onClose}
       onSubmit={handleSubmit}
-      children={<PopupLabel value={'/img/myAvatar.png'} valueRef={avatarRef} />}
+      children={<PopupLabel defaultValue={url} inputRef={avatarRef} />}
     />
   );
 }

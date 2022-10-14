@@ -16,8 +16,6 @@ export function Popup({
   children,
 }: IPopupProps) {
 
-  const handleSubmit = onSubmit;
-
   return (
     <div className="popup-wrapper">
       <div className="popup">
@@ -27,7 +25,7 @@ export function Popup({
           title="Close"
           onClick={onClose}
         />
-        <form className="popup-form" onSubmit={handleSubmit}>
+        <form className="popup-form" onSubmit={onSubmit}>
           <p className="popup-form-header">{title}</p>
 
           {children}

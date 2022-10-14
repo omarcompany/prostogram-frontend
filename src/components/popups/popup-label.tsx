@@ -1,18 +1,18 @@
 interface IPopupLabelProps {
-  value: string;
-  valueRef: React.MutableRefObject<HTMLInputElement | null>;
+  defaultValue: string;
+  inputRef: React.MutableRefObject<HTMLInputElement | null>;
 }
 
-export function PopupLabel({ value, valueRef }: IPopupLabelProps) {
+export function PopupLabel({ defaultValue, inputRef }: IPopupLabelProps) {
   return (
     <label className="popup-form-label">
       <input
         className="popup-form-input"
         type="text"
-        id="description"
-        name="profile_info_description"
-        defaultValue={value}
-        ref={valueRef}
+        id={`popup_label_${defaultValue}`}
+        name="popup_label"
+        defaultValue={defaultValue}
+        ref={inputRef}
       />
     </label>
   );

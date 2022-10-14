@@ -32,12 +32,11 @@ export function PopupEditProfile({
       textSubmit={'Save'}
       onClose={onClose}
       onSubmit={handleSubmit}
-      children={
-        <>
-          <PopupLabel value={name} valueRef={nameRef} />
-          <PopupLabel value={description} valueRef={descriptionRef} />
-        </>
-      }
-    />
+    >
+      <>
+        <PopupLabel defaultValue={name} inputRef={nameRef} />
+        <PopupLabel defaultValue={description} inputRef={descriptionRef} />
+      </>
+    </Popup>
   );
 }

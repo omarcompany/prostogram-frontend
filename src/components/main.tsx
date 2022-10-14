@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { avatarInfo } from '../mocks/avatar-info';
 import { profileInfo } from '../mocks/profile-info';
 import { PopupEditAvatar } from './popups/popup-edit-avatar';
 import { PopupEditProfile } from './popups/popup-edit-profile';
@@ -12,20 +13,25 @@ export function Main(): JSX.Element {
     setIsEditAvatarPopupOpen(false);
   };
 
+  const editAvatarClickHandler = () => setIsEditAvatarPopupOpen(true);
+  const editProfileClickHandler = () => setIsEditProfilePopupOpen(true);
+
   const { name, description } = profileInfo;
+  const { url } = avatarInfo;
 
   return (
     <>
       <section className="profile">
-        <div className="avatar">
-          <img className="avatar-image" src="images/avatar.jpg" alt="avatar" />
+        <div className="avatar" onClick={editAvatarClickHandler}>
+          <img className="avatar-image" src={url} alt="avatar" />
+          <img className="avatar-edit-icon" src="images/pencil.png" />
         </div>
         <div className="profile-info">
           <h2 className="profile-info-name">{name}</h2>
           <button
             className="button edit-profile-button"
             type="button"
-            onClick={() => setIsEditProfilePopupOpen(true)}
+            onClick={editProfileClickHandler}
           >
             <img src="images/edit-button.svg" alt="edit" />
           </button>
@@ -43,9 +49,7 @@ export function Main(): JSX.Element {
         />
       )}
 
-      {isEditAvatarPopupOpen && (
-        <PopupEditAvatar onClose={onCloseAllPopups} />
-      )}
+      {isEditAvatarPopupOpen && <PopupEditAvatar onClose={onCloseAllPopups} />}
 
       <section className="content">
         <ul className="elements">
