@@ -87,7 +87,7 @@ button:active {
     overflow: hidden;
 }
 
-.popup-profile-button {
+.edit-profile-button {
     width: 24px;
     height: 24px;
     color: white;
@@ -250,7 +250,7 @@ button:active {
     justify-content: space-between;
 
     width: 430px;
-    height: 330px;
+    height: 100%;
     border-radius: 3%;
 
     background-color: white;
@@ -261,6 +261,7 @@ button:active {
     padding: 0;
     margin: 0;
     margin-top: 34px;
+    margin-bottom: 30px;
 
     width: calc(100% - 2 * 36px);
 
@@ -273,10 +274,12 @@ button:active {
 
 .popup-form-label {
     width: calc(100% - 2 * 38px);
+    padding-bottom: 38px;
 }
 
 .popup-form-input {
     width: 100%;
+    padding-bottom: 10px;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
@@ -293,10 +296,9 @@ button:active {
 }
 
 .popup-form-submit {
-    width: calc(100% - 2 * 100px);
+    width: calc(100% - 2 * 34px);
     height: 50px;
 
-    margin-top: 20px;
     margin-bottom: 37px;
 
     border-style: hidden;
@@ -394,11 +396,7 @@ button:active {
 
     .popup-form {
         width: 282px;
-        height: 322px;
-    }
-
-    .popup-form-header {
-        margin-bottom: 30px;
+        min-height: 200px;
     }
 
     .popup-form-submit {
