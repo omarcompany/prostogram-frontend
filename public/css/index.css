@@ -87,7 +87,7 @@ button:active {
     overflow: hidden;
 }
 
-.edit-profile-button {
+.popup-profile-button {
     width: 24px;
     height: 24px;
     color: white;
@@ -209,7 +209,7 @@ button:active {
     color: var(--light-gray)
 }
 
-.edit-wrapper {
+.popup-wrapper {
     position: absolute;
     display: block;
     position: fixed;
@@ -222,13 +222,13 @@ button:active {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.edit {
+.popup {
     position: fixed;
     left: calc(50% - (430px - 32px) / 2);
     top: 195px;
 }
 
-.edit-close-button {
+.popup-close-button {
     position: absolute;
     top: -32px;
     right: -32px;
@@ -239,11 +239,11 @@ button:active {
     height: 32px;
 }
 
-.edit-close-button:hover {
+.popup-close-button:hover {
     opacity: 0.6;
 }
 
-.edit-form {
+.popup-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -257,7 +257,7 @@ button:active {
     color: black;
 }
 
-.edit-form-header {
+.popup-form-header {
     padding: 0;
     margin: 0;
     margin-top: 34px;
@@ -271,11 +271,11 @@ button:active {
     color: black;
 }
 
-.edit-form-label {
+.popup-form-label {
     width: calc(100% - 2 * 38px);
 }
 
-.edit-form-input {
+.popup-form-input {
     width: 100%;
     border-top-style: hidden;
     border-right-style: hidden;
@@ -288,11 +288,11 @@ button:active {
     line-height: 1.21;
 }
 
-.edit-form-input:focus {
+.popup-form-input:focus {
     outline: none;
 }
 
-.edit-form-submit {
+.popup-form-submit {
     width: calc(100% - 2 * 100px);
     height: 50px;
 
@@ -309,7 +309,7 @@ button:active {
     line-height: 1.22;
 }
 
-.edit-form-submit:hover {
+.popup-form-submit:hover {
     opacity: 0.8;
 }
 
@@ -381,27 +381,27 @@ button:active {
         width: calc(100% - 2 * 19px);
     }
 
-    .edit {
+    .popup {
         left: calc(50% - 282px / 2);
         top: 123px;
     }
 
-    .edit-close-button {
+    .popup-close-button {
         right: 0;
         width: 20px;
         height: 20px;
     }
 
-    .edit-form {
+    .popup-form {
         width: 282px;
         height: 322px;
     }
 
-    .edit-form-header {
+    .popup-form-header {
         margin-bottom: 30px;
     }
 
-    .edit-form-submit {
+    .popup-form-submit {
         margin: 0;
         margin-bottom: 25px;
 
@@ -409,7 +409,7 @@ button:active {
         height: 46px;
     }
 
-    .edit-form-label {
+    .popup-form-label {
         width: calc(100% - 2 * 26px);
     }
 }

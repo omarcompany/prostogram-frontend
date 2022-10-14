@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from 'react';
-import { IProfileInfo } from '../interfaces/interfases';
+import { IProfileInfo } from '../../interfaces/interfases';
 
 interface IPopupEditProps {
   profileInfo: IProfileInfo;
@@ -29,20 +29,20 @@ export function PopupEdit({
   };
 
   return (
-    <div className="edit-wrapper">
-      <div className="edit">
+    <div className="popup-wrapper">
+      <div className="popup">
         <button
-          className="button edit-close-button"
+          className="button popup-close-button"
           type="button"
           title="Close"
           onClick={handleCloseButton}
         />
-        <form className="edit-form" onSubmit={handleSubmit}>
-          <p className="edit-form-header">Edit profile</p>
+        <form className="popup-form" onSubmit={handleSubmit}>
+          <p className="popup-form-header">Edit profile</p>
 
-          <label className="edit-form-label">
+          <label className="popup-form-label">
             <input
-              className="edit-form-input edit-form-name"
+              className="popup-form-input"
               type="text"
               id="name"
               name="profile_info_name"
@@ -51,9 +51,9 @@ export function PopupEdit({
             />
           </label>
 
-          <label className="edit-form-label">
+          <label className="popup-form-label">
             <input
-              className="edit-form-input edit-form-description"
+              className="popup-form-input"
               type="text"
               id="description"
               name="profile_info_description"
@@ -63,7 +63,7 @@ export function PopupEdit({
           </label>
 
           <input
-            className="button edit-form-submit"
+            className="button popup-form-submit"
             type="submit"
             id="submit"
             name="profile_info_submit"

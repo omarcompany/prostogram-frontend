@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { profileInfo } from '../mocks/profile-info';
-import { PopupEdit } from './popup-edit';
+import { PopupEdit } from './popups/popup-edit';
 
 export function Main(): JSX.Element {
   const [isOpened, setIsOpened] = useState(false);
