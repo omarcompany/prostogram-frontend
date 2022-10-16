@@ -3,11 +3,11 @@ import { avatarInfo } from '../../mocks/avatar-info';
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
 
-export function PopupEditAvatar({
+export const PopupEditAvatar = ({
   onClose,
 }: {
   onClose: () => void;
-}): JSX.Element {
+}): JSX.Element => {
   const avatarRef = useRef<HTMLInputElement | null>(null);
 
   const url = avatarInfo.url;
@@ -29,4 +29,4 @@ export function PopupEditAvatar({
       children={<PopupLabel defaultValue={url} inputRef={avatarRef} />}
     />
   );
-}
+};

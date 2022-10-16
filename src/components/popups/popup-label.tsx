@@ -3,7 +3,7 @@ interface IPopupLabelProps {
   inputRef: React.MutableRefObject<HTMLInputElement | null>;
 }
 
-export function PopupLabel({ defaultValue, inputRef }: IPopupLabelProps) {
+export const PopupLabel = ({ defaultValue, inputRef }: IPopupLabelProps) => {
   return (
     <label className="popup-form-label">
       <input
@@ -16,4 +16,4 @@ export function PopupLabel({ defaultValue, inputRef }: IPopupLabelProps) {
       />
     </label>
   );
-}
+};

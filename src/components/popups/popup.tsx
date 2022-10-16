@@ -1,4 +1,5 @@
 import { FormEvent } from "react";
+import { PortalProvider } from "./portal-provider";
 
 interface IPopupProps {
   title: string;
@@ -17,6 +18,7 @@ export function Popup({
 }: IPopupProps) {
 
   return (
+    <PortalProvider>
     <div className="popup-wrapper">
       <div className="popup">
         <button
@@ -40,5 +42,6 @@ export function Popup({
         </form>
       </div>
     </div>
+    </PortalProvider>
   );
 }

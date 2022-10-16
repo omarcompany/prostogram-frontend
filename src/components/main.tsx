@@ -1,20 +1,26 @@
 import { useState } from 'react';
 import { avatarInfo } from '../mocks/avatar-info';
 import { profileInfo } from '../mocks/profile-info';
-import { PopupEditAvatar } from './popups/popup-edit-avatar';
-import { PopupEditProfile } from './popups/popup-edit-profile';
+import { PopupManager } from './popups/popup-manager';
+import { PopupType } from './popups/popup-type';
 
-export function Main(): JSX.Element {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+export const Main = (): JSX.Element => {
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [popupType, setPopupType] = useState(PopupType.None);
 
-  const onCloseAllPopups = () => {
-    setIsEditProfilePopupOpen(false);
-    setIsEditAvatarPopupOpen(false);
+  const openPopup = (type: PopupType) => {
+    setPopupType(type);
+    setPopupOpen(true);
   };
 
-  const editAvatarClickHandler = () => setIsEditAvatarPopupOpen(true);
-  const editProfileClickHandler = () => setIsEditProfilePopupOpen(true);
+  const onClosePopup = () => setPopupOpen(false);
+
+  const editAvatarClickHandler = () => {
+    openPopup(PopupType.EditAvatar);
+  };
+  const editProfileClickHandler = () => {
+    openPopup(PopupType.EditProfile);
+  };
 
   const { name, description } = profileInfo;
   const { url } = avatarInfo;
@@ -42,14 +48,11 @@ export function Main(): JSX.Element {
         </button>
       </section>
 
-      {isEditProfilePopupOpen && (
-        <PopupEditProfile
-          profileInfo={profileInfo}
-          onClose={onCloseAllPopups}
-        />
-      )}
-
-      {isEditAvatarPopupOpen && <PopupEditAvatar onClose={onCloseAllPopups} />}
+      <PopupManager
+        onClose={onClosePopup}
+        isOpen={popupOpen}
+        popupType={popupType}
+      />
 
       <section className="content">
         <ul className="elements">
@@ -99,4 +102,4 @@ export function Main(): JSX.Element {
       </section>
     </>
   );
-}
+};

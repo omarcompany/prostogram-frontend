@@ -1,17 +1,13 @@
 import { FormEvent, useRef } from 'react';
-import { IProfileInfo } from '../../interfaces/interfases';
+import { profileInfo } from '../../mocks/profile-info';
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
 
-interface IPopupEditProfileProps {
-  profileInfo: IProfileInfo;
-  onClose: () => void;
-}
-
-export function PopupEditProfile({
-  profileInfo,
+export const PopupEditProfile = ({
   onClose,
-}: IPopupEditProfileProps): JSX.Element {
+}: {
+  onClose: () => void;
+}): JSX.Element => {
   const { name, description } = profileInfo;
 
   const nameRef = useRef<HTMLInputElement | null>(null);
@@ -39,4 +35,4 @@ export function PopupEditProfile({
       </>
     </Popup>
   );
-}
+};
