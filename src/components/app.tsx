@@ -2,7 +2,7 @@ import { Footer } from './footer';
 import { Header } from './header';
 import { Main } from './main';
 
-export function App(): JSX.Element {
+export const App = (): JSX.Element => {
   return (
     <main>
       <Header />
@@ -12,4 +12,4 @@ export function App(): JSX.Element {
       <Footer />
     </main>
   );
-}
+};

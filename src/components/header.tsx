@@ -1,4 +1,4 @@
-export function Header(): JSX.Element {
+export const Header = (): JSX.Element => {
   return (
     <header className="header">
       <a
@@ -16,4 +16,4 @@ export function Header(): JSX.Element {
       <div className="header-line"></div>
     </header>
   );
-}
+};

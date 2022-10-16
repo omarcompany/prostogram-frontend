@@ -1,27 +1,43 @@
 import { useState } from 'react';
+import { avatarInfo } from '../mocks/avatar-info';
 import { profileInfo } from '../mocks/profile-info';
-import { PopupEdit } from './popup-edit';
+import { PopupManager } from './popups/popup-manager';
+import { PopupType } from './popups/popup-type';
 
-export function Main(): JSX.Element {
-  const [isOpened, setIsOpened] = useState(false);
+export const Main = (): JSX.Element => {
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [popupType, setPopupType] = useState(PopupType.None);
 
-  const onCloseHandler = () => {
-    setIsOpened(!isOpened);
+  const openPopup = (type: PopupType) => {
+    setPopupType(type);
+    setPopupOpen(true);
   };
+
+  const onClosePopup = () => setPopupOpen(false);
+
+  const editAvatarClickHandler = () => {
+    openPopup(PopupType.EditAvatar);
+  };
+  const editProfileClickHandler = () => {
+    openPopup(PopupType.EditProfile);
+  };
+
   const { name, description } = profileInfo;
+  const { url } = avatarInfo;
 
   return (
     <>
       <section className="profile">
-        <div className="avatar">
-          <img className="avatar-image" src="images/avatar.jpg" alt="avatar" />
+        <div className="avatar" onClick={editAvatarClickHandler}>
+          <img className="avatar-image" src={url} alt="avatar" />
+          <img className="avatar-edit-icon" src="images/pencil.png" />
         </div>
         <div className="profile-info">
           <h2 className="profile-info-name">{name}</h2>
           <button
             className="button edit-profile-button"
             type="button"
-            onClick={onCloseHandler}
+            onClick={editProfileClickHandler}
           >
             <img src="images/edit-button.svg" alt="edit" />
           </button>
@@ -32,9 +48,11 @@ export function Main(): JSX.Element {
         </button>
       </section>
 
-      {isOpened && (
-        <PopupEdit profileInfo={profileInfo} onClosePopup={onCloseHandler} />
-      )}
+      <PopupManager
+        onClose={onClosePopup}
+        isOpen={popupOpen}
+        popupType={popupType}
+      />
 
       <section className="content">
         <ul className="elements">
@@ -84,4 +102,4 @@ export function Main(): JSX.Element {
       </section>
     </>
   );
-}
+};

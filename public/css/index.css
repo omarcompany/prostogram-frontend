@@ -1,415 +1,435 @@
 @import url('../fonts/fonts.css');
 
 :root {
-    --light-gray: #545454;
+  --light-gray: #545454;
 }
 
 .button:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 button:active {
-    border-style: outset;
+  border-style: outset;
 }
 
 .page {
-    position: relative;
-    color: white;
-    background-color: black;
-    max-width: 1280px;
-    min-width: 282px;
-    margin: 0 auto;
-    font-family: 'Inter', 'Arial', sans-serif;
-    font-style: normal;
+  position: relative;
+  color: white;
+  background-color: black;
+  max-width: 1280px;
+  min-width: 282px;
+  margin: 0 auto;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
 }
 
 .header {
-    display: grid;
-    row-gap: 41px;
+  display: grid;
+  row-gap: 41px;
 
-    margin: auto;
-    margin-top: 45px;
-    width: calc(100% - 2 * 200px);
+  margin: auto;
+  margin-top: 45px;
+  width: calc(100% - 2 * 200px);
 }
 
 .header-logo:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .header-line {
-    height: 0px;
+  height: 0px;
 
-    opacity: 0.7;
-    border: 1px solid #545454;
+  opacity: 0.7;
+  border: 1px solid #545454;
 }
 
 .profile {
-    display: grid;
-    margin: auto;
-    margin-top: 40px;
-    width: calc(100% - 2 * 200px);
+  display: grid;
+  margin: auto;
+  margin-top: 40px;
+  width: calc(100% - 2 * 200px);
 
-    transition: all 1s;
+  transition: all 1s;
 
-    grid-template-columns: 1fr 4fr 1fr;
-    column-gap: 20px;
+  grid-template-columns: 1fr 4fr 1fr;
+  column-gap: 20px;
 }
 
 .avatar {
-    width: 120px;
-    height: 120px;
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.avatar:hover {
+  cursor: pointer;
+}
+
+.avatar:hover .avatar-edit-icon {
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+}
+
+.avatar:hover .avatar-image {
+  opacity: 0.3;
+}
+
+.avatar-edit-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  opacity: 0;
 }
 
 .avatar-image {
-    width: 100%;
-    border-radius: 50%;
+  width: 100%;
+  border-radius: 50%;
+  z-index: 2;
 }
 
 .profile-info {
-    display: grid;
-    grid-template-columns: minmax(200px, 312px) 24px;
-    column-gap: 10px;
+  display: grid;
+  grid-template-columns: minmax(200px, 312px) 24px;
+  column-gap: 10px;
 
-    align-self: center;
+  align-self: center;
 }
 
 .profile-info-name {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 
-    font-family: 'Inter';
-    font-weight: 500;
-    font-size: 42px;
-    line-height: 1.14;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .edit-profile-button {
-    width: 24px;
-    height: 24px;
-    color: white;
-    border-color: white;
-    background-color: black;
+  width: 24px;
+  height: 24px;
+  color: white;
+  border-color: white;
+  background-color: black;
 
-    align-self: center;
+  align-self: center;
 }
 
 .profile-info-description {
-    padding: 0;
-    margin: 0;
-    margin-top: 16px;
+  padding: 0;
+  margin: 0;
+  margin-top: 16px;
 
-    font-family: 'Inter';
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .add-button {
-    width: 150px;
-    background-color: black;
-    color: white;
-    border-color: white;
+  width: 150px;
+  background-color: black;
+  color: white;
+  border-color: white;
 
-    font-size: 2.5em;
+  font-size: 2.5em;
 
-    align-self: center;
+  align-self: center;
 }
 
 .element {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 
-    list-style: none;
-    color: black;
-    background-color: white;
-    min-width: 282px;
+  list-style: none;
+  color: black;
+  background-color: white;
+  min-width: 282px;
 
-    border-radius: 5%;
+  border-radius: 5%;
 
-    overflow: hidden
+  overflow: hidden;
 }
 
 .element-like {
-    content: url("../images/like-disabled.svg")
+  content: url('../images/like-disabled.svg');
 }
 
 .element-like:hover {
-    content: url("../images/like-hover.svg");
+  content: url('../images/like-hover.svg');
 }
 
 .element-like:active {
-    content: url("../images/like-active.svg");
+  content: url('../images/like-active.svg');
 }
 
 .content {
-    padding: 0;
-    margin: auto;
-    margin-top: 40px;
+  padding: 0;
+  margin: auto;
+  margin-top: 40px;
 
-    width: calc(100% - 2 * 200px);
+  width: calc(100% - 2 * 200px);
 
-    transition: all 1s;
+  transition: all 1s;
 }
 
 .elements {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-    gap: 17px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  gap: 17px;
 }
 
 .element-image {
-    width: 100%;
-    overflow: visible;
+  width: 100%;
+  overflow: visible;
 }
 
 .element-title {
-    display: flex;
+  display: flex;
 
-    margin-left: 21px;
-    margin-right: 15px;
+  margin-left: 21px;
+  margin-right: 15px;
 
-    justify-content: space-between;
-    align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .element-paragraph {
-    max-width: 80%;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 1.2;
+  max-width: 80%;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .footer {
-    width: calc(100% - 2 * 200px);
-    margin: auto;
-    margin-top: 66px;
-    margin-bottom: 60px;
+  width: calc(100% - 2 * 200px);
+  margin: auto;
+  margin-top: 66px;
+  margin-bottom: 60px;
 }
 
 .footer-sign {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.22;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
 
-    color: var(--light-gray)
+  color: var(--light-gray);
 }
 
-.edit-wrapper {
-    position: absolute;
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.6);
+.popup-wrapper {
+  position: absolute;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.edit {
-    position: fixed;
-    left: calc(50% - (430px - 32px) / 2);
-    top: 195px;
+.popup {
+  position: fixed;
+  left: calc(50% - (430px - 32px) / 2);
+  top: 195px;
 }
 
-.edit-close-button {
-    position: absolute;
-    top: -32px;
-    right: -32px;
-    padding: 0;
-    border: none;
-    background: url("../images/close-icon.svg") center no-repeat;
-    width: 32px;
-    height: 32px;
+.popup-close-button {
+  position: absolute;
+  top: -32px;
+  right: -32px;
+  padding: 0;
+  border: none;
+  background: url('../images/close-icon.svg') center no-repeat;
+  width: 32px;
+  height: 32px;
 }
 
-.edit-close-button:hover {
-    opacity: 0.6;
+.popup-close-button:hover {
+  opacity: 0.6;
 }
 
-.edit-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
-    width: 430px;
-    height: 330px;
-    border-radius: 3%;
+  width: 430px;
+  height: 100%;
+  border-radius: 3%;
 
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
-.edit-form-header {
-    padding: 0;
-    margin: 0;
-    margin-top: 34px;
+.popup-form-header {
+  padding: 0;
+  margin: 0;
+  margin-top: 34px;
+  margin-bottom: 30px;
 
-    width: calc(100% - 2 * 36px);
+  width: calc(100% - 2 * 36px);
 
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 1.2;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
 
-    color: black;
+  color: black;
 }
 
-.edit-form-label {
-    width: calc(100% - 2 * 38px);
+.popup-form-label {
+  width: calc(100% - 2 * 38px);
+  padding-bottom: 38px;
 }
 
-.edit-form-input {
-    width: 100%;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
+.popup-form-input {
+  width: 100%;
+  padding-bottom: 10px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
 
-    border-bottom: 1px solid rgba(black, 0.2);
+  border-bottom: 1px solid rgba(black, 0.2);
 
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.21;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
 }
 
-.edit-form-input:focus {
-    outline: none;
+.popup-form-input:focus {
+  outline: none;
 }
 
-.edit-form-submit {
-    width: calc(100% - 2 * 100px);
-    height: 50px;
+.popup-form-submit {
+  width: calc(100% - 2 * 34px);
+  height: 50px;
 
-    margin-top: 20px;
-    margin-bottom: 37px;
+  margin-bottom: 37px;
 
-    border-style: hidden;
-    border-radius: 5px;
-    background-color: black;
-    color: white;
+  border-style: hidden;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
 
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.22;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
 }
 
-.edit-form-submit:hover {
-    opacity: 0.8;
+.popup-form-submit:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 919px) {
+  .header {
+    margin-top: 28px;
+    width: 100%;
 
-    .header {
-        margin-top: 28px;
-        width: 100%;
+    display: grid;
+    row-gap: 31px;
+  }
 
-        display: grid;
-        row-gap: 31px;
-    }
+  .header-logo {
+    margin-left: 27px;
+  }
 
-    .header-logo {
-        margin-left: 27px;
-    }
+  .profile {
+    margin: auto;
+    margin-top: 42px;
+    width: calc(100% - 2 * 19px);
 
-    .profile {
-        margin: auto;
-        margin-top: 42px;
-        width: calc(100% - 2 * 19px);
+    grid-template-columns: 1fr;
+  }
 
-        grid-template-columns: 1fr;
-    }
+  .avatar {
+    justify-self: center;
+  }
 
-    .avatar {
-        justify-self: center;
-    }
+  .add-button {
+    margin: 0;
+    margin-top: 36px;
 
-    .add-button {
-        margin: 0;
-        margin-top: 36px;
+    width: 100%;
+  }
 
-        width: 100%;
-    }
+  .profile-info {
+    margin: 0;
+    margin-top: 26px;
+    margin-left: 34px;
+    justify-self: center;
+  }
 
-    .profile-info {
-        margin: 0;
-        margin-top: 26px;
-        margin-left: 34px;
-        justify-self: center;
-    }
+  .profile-info-name {
+    font-size: 27px;
+    line-height: 1.22;
+    text-align: center;
+  }
 
-    .profile-info-name {
-        font-size: 27px;
-        line-height: 1.22;
-        text-align: center;
-    }
+  .profile-info-description {
+    font-size: 14px;
+    line-height: 1.21;
 
-    .profile-info-description {
-        font-size: 14px;
-        line-height: 1.21;
+    text-align: center;
+  }
 
-        text-align: center;
-    }
+  .content {
+    margin: auto;
+    margin-top: 36px;
 
-    .content {
-        margin: auto;
-        margin-top: 36px;
+    width: calc(100% - 19px * 2);
 
-        width: calc(100% - 19px * 2);
+    justify-content: center;
+  }
 
-        justify-content: center;
-    }
+  .footer {
+    margin-top: 48px;
+    margin-bottom: 36px;
+    width: calc(100% - 2 * 19px);
+  }
 
-    .footer {
-        margin-top: 48px;
-        margin-bottom: 36px;
-        width: calc(100% - 2 * 19px);
-    }
+  .popup {
+    left: calc(50% - 282px / 2);
+    top: 123px;
+  }
 
-    .edit {
-        left: calc(50% - 282px / 2);
-        top: 123px;
-    }
+  .popup-close-button {
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
 
-    .edit-close-button {
-        right: 0;
-        width: 20px;
-        height: 20px;
-    }
+  .popup-form {
+    width: 282px;
+    min-height: 200px;
+  }
 
-    .edit-form {
-        width: 282px;
-        height: 322px;
-    }
+  .popup-form-submit {
+    margin: 0;
+    margin-bottom: 25px;
 
-    .edit-form-header {
-        margin-bottom: 30px;
-    }
+    width: calc(100% - 2 * 19px);
+    height: 46px;
+  }
 
-    .edit-form-submit {
-        margin: 0;
-        margin-bottom: 25px;
-
-        width: calc(100% - 2 * 19px);
-        height: 46px;
-    }
-
-    .edit-form-label {
-        width: calc(100% - 2 * 26px);
-    }
+  .popup-form-label {
+    width: calc(100% - 2 * 26px);
+  }
 }
