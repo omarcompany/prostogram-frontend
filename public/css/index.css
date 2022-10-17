@@ -157,15 +157,15 @@ button:active {
   overflow: hidden;
 }
 
-.element-like {
+.element-like-disabled {
   content: url('../images/like-disabled.svg');
 }
 
-.element-like:hover {
+.element-like-disabled:hover {
   content: url('../images/like-hover.svg');
 }
 
-.element-like:active {
+.element-like-active {
   content: url('../images/like-active.svg');
 }
 
@@ -189,10 +189,33 @@ button:active {
   gap: 17px;
 }
 
+.element {
+  position: relative;
+}
+
 .element-image {
   width: 100%;
   overflow: visible;
 }
+
+.element-trash-icon {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  right: 15px;
+  top: 18px;
+
+  opacity: 0;
+}
+
+.element:hover .element-trash-icon {
+  opacity: 1;
+}
+
+#trash:hover {
+  opacity: 0.5;
+}
+
 
 .element-title {
   display: flex;
@@ -213,6 +236,27 @@ button:active {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.like-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.like-counter {
+  width: 10px;
+  height: 13px;
+
+  margin: 0;
+  padding: 0;
+  margin-top: 3px;
+
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
 }
 
 .footer {
