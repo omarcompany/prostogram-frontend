@@ -1,4 +1,4 @@
-import { cards } from '../../mocks/cards';
+import { cards } from '../../../mocks/cards';
 import { Card } from './card';
 
 export const CardBoard = (): JSX.Element => {

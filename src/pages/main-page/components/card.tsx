@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ICard } from '../../interfaces/interfases';
+import { ICard } from '../../../interfaces/interfases';
 
 export const Card = ({ card }: { card: ICard }): JSX.Element => {
   const { id, name, url, liked, counter } = card;
@@ -16,7 +16,7 @@ export const Card = ({ card }: { card: ICard }): JSX.Element => {
   return (
     <li className="element">
       <img className="element-image" src={url} alt={`${name}_${id}`} />
-      <img id="trash" className="element-trash-icon" src="images/trash.svg" />
+      <img id="trash" alt="trash icon" className="element-trash-icon" src="images/trash.svg" />
       <div className="element-title">
         <p className="element-paragraph">{name}</p>
         <div className="like-wrapper">
