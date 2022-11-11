@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { avatarInfo } from '../mocks/avatar-info';
-import { profileInfo } from '../mocks/profile-info';
-import { CardBoard } from './card/card-board';
-import { PopupManager } from './popups/popup-manager';
-import { PopupType } from './popups/popup-type';
+import { avatarInfo } from '../../../mocks/avatar-info';
+import { profileInfo } from '../../../mocks/profile-info';
+import { CardBoard } from './card-board'
+import { PopupManager } from '../../../components/popups/popup-manager'
+import { PopupType } from '../../../components/popups/popup-type';
 
 export const Main = (): JSX.Element => {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -31,7 +31,7 @@ export const Main = (): JSX.Element => {
       <section className="profile">
         <div className="avatar" onClick={editAvatarClickHandler}>
           <img className="avatar-image" src={url} alt="avatar" />
-          <img className="avatar-edit-icon" src="images/pencil.png" />
+          <img className="avatar-edit-icon" alt="avatar edit icon" src="images/pencil.png" />
         </div>
         <div className="profile-info">
           <h2 className="profile-info-name">{name}</h2>
