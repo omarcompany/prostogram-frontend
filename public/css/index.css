@@ -38,38 +38,24 @@ button:active {
   align-items: center;
 }
 
-.header-logo,
-.header-logo:visited {
-  font-size: 32px;
-  line-height: 1.22;
-
+.header-link,
+.header-link:visited {
   text-decoration: none;
   color: white;
 }
 
-.header-logo:hover {
+.header-link:hover {
   opacity: 0.6;
 }
 
-.auth-header-button {
-  padding: 0;
+.header-logo {
+  font-size: 32px;
+  line-height: 1.22;
+}
 
+.auth-header-link {
   font-size: 18px;
   line-height: 1.22;
-
-  color: white;
-  border: none;
-  background: none;
-}
-
-.auth-header-button:active {
-  color: white;
-  border: none;
-  background: none;
-}
-
-.auth-header-button:hover {
-  opacity: 0.6;
 }
 
 .header-line {
@@ -492,11 +478,9 @@ button:active {
   line-height: 1.22;
 }
 
-.alredy-have-account-button {
-  margin: 0;
-  padding: 0;
-
+.alredy-have-account-link {
   margin-top: 15px;
+
   font-weight: 400;
   font-size: 14px;
   line-height: 1.22;
@@ -545,9 +529,7 @@ button:active {
     margin-top: 140px;
   }
 
-  .alredy-have-account-button {
-    margin: 0;
-    padding: 0;
+  .alredy-have-account-link {
     margin-top: 20px;
   }
 }
@@ -565,7 +547,7 @@ button:active {
     margin-left: 27px;
   }
 
-  .auth-header-button {
+  .auth-header-link {
     margin-right: 27px;
   }
 
@@ -655,12 +637,6 @@ button:active {
   }
   .auth-form-submit {
     margin-top: 140px;
-  }
-
-  .alredy-have-account-button {
-    margin: 0;
-    padding: 0;
-    margin-top: 20px;
   }
 }
 
