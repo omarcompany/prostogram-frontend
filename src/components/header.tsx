@@ -1,4 +1,8 @@
-export const Header = (): JSX.Element => {
+export const Header = ({
+  children,
+}: {
+  children?: JSX.Element;
+}): JSX.Element => {
   return (
     <header className="header">
       <div className="header-actions-wrapper">
@@ -10,7 +14,7 @@ export const Header = (): JSX.Element => {
         >
           Prostogram
         </a>
-        <button className="sign-in-button">Sign in</button>
+        {children}
       </div>
       <div className="header-line"></div>
     </header>
