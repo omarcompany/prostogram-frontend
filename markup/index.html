@@ -109,42 +109,76 @@
           </li>
         </ul>
       </section>
-      <div class="edit-wrapper" style="display: none">
-        <div class="edit">
+      <div class="popup-wrapper" style="display: none">
+        <div class="popup">
           <button
-            class="button edit-close-button"
+            class="button popup-close-button"
             type="button"
             title="Close"
           ></button>
-          <form class="edit-form" action="#" method="post">
-            <p class="edit-form-header">Edit profile</p>
+          <form class="popup-form" action="#" method="post">
+            <p class="popup-form-header">Edit profile</p>
 
-            <label class="edit-form-label">
+            <label class="popup-form-label">
               <input
-                class="edit-form-input edit-form-name"
+                class="popup-form-input edit-form-name"
                 type="text"
                 id="name"
-                name="profile_info_name"
+                name="popup_label_name"
               />
             </label>
 
-            <label class="edit-form-label">
+            <label class="popup-form-label">
               <input
-                class="edit-form-input edit-form-description"
+                class="popup-form-input edit-form-description"
                 type="text"
                 id="description"
-                name="profile_info_description"
+                name="popup_label_description"
               />
             </label>
 
             <input
-              class="button edit-form-submit"
+              class="button popup-form-submit"
               type="submit"
               id="submit"
-              name="profile_info_submit"
+              name="popup_label_submit"
               value="Save"
             />
           </form>
+        </div>
+      </div>
+      <div class="popup-wrapper" style="display: none">
+        <div class="popup">
+          <div class="popup-auth">
+            <button
+              class="button popup-close-button"
+              type="button"
+              title="Close"
+            ></button>
+            <img
+              class="popup-auth-image"
+              src="../public/images/registration-success.svg"
+              alt="registration success"
+            />
+            <p class="popup-auth-message">Registration successful!</p>
+          </div>
+        </div>
+      </div>
+      <div class="popup-wrapper" style="display: none">
+        <div class="popup">
+          <div class="popup-auth">
+            <button
+              class="button popup-close-button"
+              type="button"
+              title="Close"
+            ></button>
+            <img
+              class="popup-auth-image"
+              src="../public/images/something-wrong.svg"
+              alt="something wrong"
+            />
+            <p class="popup-auth-message">Something went wrong! Try again.</p>
+          </div>
         </div>
       </div>
     </main>
