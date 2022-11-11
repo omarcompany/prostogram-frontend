@@ -1,3 +1,7 @@
+import { Link } from 'react-router-dom';
+
+import { AppRoute } from '../const';
+
 export const Header = ({
   children,
 }: {
@@ -6,14 +10,14 @@ export const Header = ({
   return (
     <header className="header">
       <div className="header-actions-wrapper">
-        <a
-          className="header-logo"
-          href=""
+        <Link
+          className="header-link header-logo"
+          to={AppRoute.Main}
           target="_top"
           rel="noopener noreferrer"
         >
           Prostogram
-        </a>
+        </Link>
         {children}
       </div>
       <div className="header-line"></div>
