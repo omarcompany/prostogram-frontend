@@ -1,10 +1,10 @@
-import { Header } from './components/header';
+import { RegistrationHeader } from './components/registration-header';
 import { Registration } from './components/registration';
 
 export const RegistrationPage = (): JSX.Element => {
   return (
     <>
-      <Header />
+      <RegistrationHeader />
       <Registration />
     </>
   );

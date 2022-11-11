@@ -1,12 +1,12 @@
 export const Registration = (): JSX.Element => {
     return (
-      <div className="registration">
-        <form className="registration-form" action="#" method="post">
-          <p className="registration-form-header">Registration</p>
+      <div className="auth">
+        <form className="auth-form" action="#" method="post">
+          <p className="auth-form-header">Registration</p>
   
-          <label className="registration-form-label">
+          <label className="auth-form-label">
             <input
-              className="registration-form-input"
+              className="auth-form-input"
               type="text"
               id="email"
               name="registration_form_email"
@@ -14,9 +14,9 @@ export const Registration = (): JSX.Element => {
             />
           </label>
   
-          <label className="registration-form-label">
+          <label className="auth-form-label">
             <input
-              className="registration-form-input"
+              className="auth-form-input"
               type="text"
               id="password"
               name="registration_form_password"
@@ -25,13 +25,13 @@ export const Registration = (): JSX.Element => {
           </label>
   
           <input
-            className="button registration-form-submit"
+            className="button auth-form-submit"
             type="submit"
             id="submit"
             name="registration_form_submit"
             value="Sign up"
           />
-          <button className="sign-in-button alredy-have-account-button">
+          <button className="alredy-have-account-button auth-header-button">
             Have an Account Already? Sign in
           </button>
         </form>
