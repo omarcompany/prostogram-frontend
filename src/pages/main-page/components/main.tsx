@@ -1,21 +1,13 @@
-import { useState } from 'react';
+import { PopupType } from '../../../components/popups/popup-type';
 import { avatarInfo } from '../../../mocks/avatar-info';
 import { profileInfo } from '../../../mocks/profile-info';
-import { CardBoard } from './card-board'
-import { PopupManager } from '../../../components/popups/popup-manager'
-import { PopupType } from '../../../components/popups/popup-type';
+import { CardBoard } from './card-board';
 
-export const Main = (): JSX.Element => {
-  const [popupOpen, setPopupOpen] = useState(false);
-  const [popupType, setPopupType] = useState(PopupType.None);
-
-  const openPopup = (type: PopupType) => {
-    setPopupType(type);
-    setPopupOpen(true);
-  };
-
-  const onClosePopup = () => setPopupOpen(false);
-
+export const Main = ({
+  openPopup,
+}: {
+  openPopup: (popupType: PopupType) => void;
+}): JSX.Element => {
   const editAvatarClickHandler = () => {
     openPopup(PopupType.EditAvatar);
   };
@@ -31,7 +23,11 @@ export const Main = (): JSX.Element => {
       <section className="profile">
         <div className="avatar" onClick={editAvatarClickHandler}>
           <img className="avatar-image" src={url} alt="avatar" />
-          <img className="avatar-edit-icon" alt="avatar edit icon" src="images/pencil.png" />
+          <img
+            className="avatar-edit-icon"
+            alt="avatar edit icon"
+            src="images/pencil.png"
+          />
         </div>
         <div className="profile-info">
           <h2 className="profile-info-name">{name}</h2>
@@ -48,12 +44,6 @@ export const Main = (): JSX.Element => {
           +
         </button>
       </section>
-
-      <PopupManager
-        onClose={onClosePopup}
-        isOpen={popupOpen}
-        popupType={popupType}
-      />
 
       <section className="content">
         <CardBoard />

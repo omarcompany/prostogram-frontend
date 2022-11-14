@@ -1,5 +1,7 @@
 export enum PopupType {
   EditAvatar,
   EditProfile,
-  None
+  RegistrationSuccess,
+  SomethingWrong,
+  None,
 }

@@ -313,7 +313,7 @@ button:active {
 .popup {
   position: fixed;
   width: 430px;
-  left: calc(50% - (430px - 32px) / 2);
+  left: calc(50% - (430px) / 2);
   top: 195px;
 }
 
@@ -608,7 +608,7 @@ button:active {
   .popup {
     position: fixed;
     width: 430px;
-    left: calc(50% - (430px - 32px) / 2);
+    left: calc(50% - (430px) / 2);
     top: 195px;
   }
 

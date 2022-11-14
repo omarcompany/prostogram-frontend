@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { PortalProvider } from "./portal-provider";
+import { PortalProvider } from "../../../components/popups/portal-provider";
 
 interface IPopupProps {
   title: string;
