@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from 'react';
-import { avatarInfo } from '../../mocks/avatar-info';
+import { avatarInfo } from '../../../mocks/avatar-info';
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
 

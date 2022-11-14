@@ -1,38 +1,57 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { PrivateRoute } from './components/private-route/private-route';
+import { useState } from 'react';
 
 import { AppRoute, AuthorizationStatus } from './const';
 import { LoginPage } from './pages/login-page/login-page';
 import { MainPage } from './pages/main-page/main-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
+import { PopupManager } from './components/popups/popup-manager';
+import { PopupType } from './components/popups/popup-type';
+import { PrivateRoute } from './components/private-route/private-route';
 import { RegistrationPage } from './pages/registration-page/registration-page';
 
 export const App = (): JSX.Element => {
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [popupType, setPopupType] = useState(PopupType.None);
+
+  const openPopup = (type: PopupType) => {
+    setPopupType(type);
+    setPopupOpen(true);
+  };
+
+  const onClosePopup = () => setPopupOpen(false);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Registration}
-          element={<RegistrationPage />}
-        />
-        <Route
-          path={AppRoute.Login}
-          element={<LoginPage />}
-        />
-        <Route
-          path={AppRoute.Main}
-          element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}>
-              <MainPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="*"
-          element={<NotFoundPage />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <PopupManager
+        onClose={onClosePopup}
+        isOpen={popupOpen}
+        popupType={popupType}
+      />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Registration}
+            element={<RegistrationPage openPopup={openPopup} />}
+          />
+          <Route
+            path={AppRoute.Login}
+            element={<LoginPage openPopup={openPopup} />}
+          />
+          <Route
+            path={AppRoute.Main}
+            element={
+              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                <MainPage openPopup={openPopup} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={<NotFoundPage />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };

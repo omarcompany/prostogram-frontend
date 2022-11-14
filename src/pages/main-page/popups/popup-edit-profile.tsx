@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from 'react';
-import { profileInfo } from '../../mocks/profile-info';
+import { profileInfo } from '../../../mocks/profile-info';
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
 
