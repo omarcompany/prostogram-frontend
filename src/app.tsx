@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-import { AppRoute } from './const';
+import { AppRoute, AuthorizationStatus } from './const';
+import { AuthContext } from './context/auth-provider';
+import { getCurrentUser } from './action/user';
 import { LoginPage } from './pages/login-page/login-page';
 import { MainPage } from './pages/main-page/main-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
@@ -11,6 +13,18 @@ import { PrivateRoute } from './components/private-route/private-route';
 import { RegistrationPage } from './pages/registration-page/registration-page';
 
 export const App = (): JSX.Element => {
+  const { setAuthorizationStatus } = useContext(AuthContext);
+
+  useEffect(() => {
+    getCurrentUser()
+      .then(() => {
+        setAuthorizationStatus(AuthorizationStatus.Auth);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupType, setPopupType] = useState(PopupType.None);
 
@@ -46,10 +60,7 @@ export const App = (): JSX.Element => {
               </PrivateRoute>
             }
           />
-          <Route
-            path="*"
-            element={<NotFoundPage />}
-          />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>

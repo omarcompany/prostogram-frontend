@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
 import { Auth } from '../../../components/auth';
@@ -15,7 +15,7 @@ export const Login = ({
   openPopup: (popupType: PopupType) => void;
 }): JSX.Element => {
   const navigate = useNavigate();
-  const { setAuthorizationStatus } = useContext(AuthContext);
+  const {authorizationStatus, setAuthorizationStatus } = useContext(AuthContext);
 
   const handleSubmit: submitAuthMethod = (event, email, password) => {
     singIn({ email, password })
@@ -29,7 +29,9 @@ export const Login = ({
       });
   };
 
-  return (
+  return authorizationStatus === AuthorizationStatus.Auth ? (
+    <Navigate to={AppRoute.Main} />
+  ) : (
     <Auth
       handleSubmit={handleSubmit}
       submitTitle="Sign in"
