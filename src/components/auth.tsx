@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from 'react';
-import { submitAuthMethod } from '../../../types';
+import { submitAuthMethod } from '../types';
 
 enum ErrorMessage {
   Email = 'Incorrect email, e.g. name@mail.ru',
