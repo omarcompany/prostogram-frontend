@@ -1,12 +1,13 @@
 import { api } from '../store';
 import { IUser } from '../interfaces';
 
-export const singUp = async ({ email, password }: IUser) => {
+export const singIn = async ({ email, password }: IUser) => {
   try {
-    await api.post<string>('/signup', {
-      email,
+    const result = await api.post('/signin', {
       password,
+      email,
     });
+    return result;
   } catch (error) {
     return Promise.reject(error);
   }

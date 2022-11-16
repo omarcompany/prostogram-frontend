@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
-import { AppRoute, AuthorizationStatus } from './const';
+import { AppRoute } from './const';
 import { LoginPage } from './pages/login-page/login-page';
 import { MainPage } from './pages/main-page/main-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
@@ -41,7 +41,7 @@ export const App = (): JSX.Element => {
           <Route
             path={AppRoute.Main}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <PrivateRoute>
                 <MainPage openPopup={openPopup} />
               </PrivateRoute>
             }
