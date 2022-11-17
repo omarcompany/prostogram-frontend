@@ -1,7 +1,12 @@
 import { api } from '../store';
-import { IUser } from '../interfaces';
 
-export const singUp = async ({ email, password }: IUser) => {
+export const singUp = async ({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) => {
   try {
     await api.post<string>('/signup', {
       email,
