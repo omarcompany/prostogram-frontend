@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import { AppRoute, AuthorizationStatus } from './const';
 import { AuthContext } from './context/auth-provider';
-import { getCurrentUser } from './action/user';
+import { getUserData } from './action/user';
 import { LoginPage } from './pages/login-page/login-page';
 import { MainPage } from './pages/main-page/main-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
@@ -16,7 +16,7 @@ export const App = (): JSX.Element => {
   const { setAuthorizationStatus } = useContext(AuthContext);
 
   useEffect(() => {
-    getCurrentUser()
+    getUserData()
       .then(() => {
         setAuthorizationStatus(AuthorizationStatus.Auth);
       })
