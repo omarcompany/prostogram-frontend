@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { getUserData } from '../../../action/user';
 import { PopupType } from '../../../components/popups/popup-type';
-import { IUserData } from '../../../interfaces';
+import { UserDataContext } from '../../../context/user-data-provider';
 
 export const Profile = ({
   openPopup,
 }: {
   openPopup: (popupType: PopupType) => void;
 }) => {
-  const [userData, setUserData] = useState<IUserData | null>(null);
+  const { userData, setUserData } = useContext(UserDataContext);
 
   useEffect(() => {
     getUserData()
       .then((data) => {
-        setUserData(data)
+        setUserData(data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [setUserData]);
 
   const editAvatarClickHandler = () => {
     openPopup(PopupType.EditAvatar);
@@ -29,7 +29,11 @@ export const Profile = ({
   return (
     <section className="profile">
       <div className="avatar" onClick={editAvatarClickHandler}>
-        <img className="avatar-image" src={userData?.avatar ?? "-"} alt="avatar" />
+        <img
+          className="avatar-image"
+          src={userData?.avatar ?? '-'}
+          alt="avatar"
+        />
         <img
           className="avatar-edit-icon"
           alt="avatar edit icon"
