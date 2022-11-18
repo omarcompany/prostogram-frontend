@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { AuthProvider } from './context/auth-provider';
 
 import { App } from './app';
+import { UserDataProvider } from './context/user-data-provider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <UserDataProvider>
+        <App />
+      </UserDataProvider>
     </AuthProvider>
   </React.StrictMode>
 );

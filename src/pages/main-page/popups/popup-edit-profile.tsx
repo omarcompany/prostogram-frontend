@@ -1,14 +1,17 @@
+import { useContext } from 'react';
 import { FormEvent, useRef } from 'react';
-import { profileInfo } from '../../../mocks/profile-info';
+
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
+import { updateProfile } from '../../../action/user';
+import { UserDataContext } from '../../../context/user-data-provider';
 
 export const PopupEditProfile = ({
   onClose,
 }: {
   onClose: () => void;
 }): JSX.Element => {
-  const { name, description } = profileInfo;
+  const { userData, setUserData } = useContext(UserDataContext);
 
   const nameRef = useRef<HTMLInputElement | null>(null);
   const descriptionRef = useRef<HTMLInputElement | null>(null);
@@ -16,8 +19,16 @@ export const PopupEditProfile = ({
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    profileInfo.name = nameRef.current?.value || '';
-    profileInfo.description = descriptionRef.current?.value || '';
+    const name = nameRef.current?.value || '';
+    const about = descriptionRef.current?.value || '';
+
+    updateProfile({ name, about })
+      .then((data) => {
+        setUserData(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     onClose();
   };
@@ -30,8 +41,11 @@ export const PopupEditProfile = ({
       onSubmit={handleSubmit}
     >
       <>
-        <PopupLabel defaultValue={name} inputRef={nameRef} />
-        <PopupLabel defaultValue={description} inputRef={descriptionRef} />
+        <PopupLabel defaultValue={userData?.name ?? ''} inputRef={nameRef} />
+        <PopupLabel
+          defaultValue={userData?.about ?? ''}
+          inputRef={descriptionRef}
+        />
       </>
     </Popup>
   );
