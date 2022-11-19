@@ -1,6 +1,5 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
-import { getUserData } from '../../../action/user';
 import { PopupType } from '../../../components/popups/popup-type';
 import { UserDataContext } from '../../../context/user-data-provider';
 
@@ -9,21 +8,17 @@ export const Profile = ({
 }: {
   openPopup: (popupType: PopupType) => void;
 }) => {
-  const { userData, setUserData } = useContext(UserDataContext);
-
-  useEffect(() => {
-    getUserData()
-      .then((data) => {
-        setUserData(data);
-      })
-      .catch((error) => console.log(error));
-  }, [setUserData]);
+  const { userData } = useContext(UserDataContext);
 
   const editAvatarClickHandler = () => {
     openPopup(PopupType.EditAvatar);
   };
   const editProfileClickHandler = () => {
     openPopup(PopupType.EditProfile);
+  };
+
+  const addNewCardClickHandler = () => {
+    openPopup(PopupType.NewCard);
   };
 
   return (
@@ -51,7 +46,11 @@ export const Profile = ({
         </button>
         <p className="profile-info-description">{userData?.about}</p>
       </div>
-      <button className="button add-button" type="button">
+      <button
+        className="button add-button"
+        type="button"
+        onClick={addNewCardClickHandler}
+      >
         +
       </button>
     </section>

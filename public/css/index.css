@@ -167,7 +167,18 @@ button:active {
   align-self: center;
 }
 
+.elements {
+  padding: 0;
+  margin: 0;
+
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  gap: 17px;
+}
+
 .element {
+  position: relative;
   padding: 0;
   margin: 0;
 
@@ -175,9 +186,55 @@ button:active {
   color: black;
   background-color: white;
   min-width: 282px;
+  min-height: 361px;
+
+  overflow: hidden;
 
   border-radius: 5%;
+}
 
+.element-image {
+  width: 100%;
+  height: 75%;
+}
+
+.element-trash-icon {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  right: 15px;
+  top: 18px;
+
+  opacity: 0;
+}
+
+.element:hover .element-trash-icon {
+  opacity: 1;
+}
+
+.element-title {
+  display: flex;
+
+  margin-left: 21px;
+  margin-right: 15px;
+
+  height: 25%;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.element-paragraph {
+  padding: 0;
+  margin: 0;
+
+  max-width: 80%;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
   overflow: hidden;
 }
 
@@ -203,62 +260,8 @@ button:active {
   transition: all 1s;
 }
 
-.elements {
-  padding: 0;
-  margin: 0;
-
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-  gap: 17px;
-}
-
-.element {
-  position: relative;
-}
-
-.element-image {
-  width: 100%;
-  overflow: visible;
-}
-
-.element-trash-icon {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  right: 15px;
-  top: 18px;
-
-  opacity: 0;
-}
-
-.element:hover .element-trash-icon {
-  opacity: 1;
-}
-
 #trash:hover {
   opacity: 0.5;
-}
-
-.element-title {
-  display: flex;
-
-  margin-left: 21px;
-  margin-right: 15px;
-
-  justify-content: space-between;
-  align-items: center;
-}
-
-.element-paragraph {
-  max-width: 80%;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 1.2;
-
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .like-wrapper {

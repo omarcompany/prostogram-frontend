@@ -14,3 +14,12 @@ export interface ICard {
   counter: number;
   liked: boolean;
 }
+
+export interface ICardServer {
+  _id: string;
+  name: string;
+  link: string;
+  createdAt: string;
+  owner: string;
+  likes: string[];
+}

@@ -4,6 +4,7 @@ export interface IUserData {
   about: string;
   password?: string;
   email?: string;
+  id?: string;
 }
 
 export interface IUserDataServer {
