@@ -3,5 +3,6 @@ export enum PopupType {
   EditProfile,
   RegistrationSuccess,
   SomethingWrong,
+  NewCard,
   None,
 }

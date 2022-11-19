@@ -11,19 +11,22 @@ import { PopupManager } from './components/popups/popup-manager';
 import { PopupType } from './components/popups/popup-type';
 import { PrivateRoute } from './components/private-route/private-route';
 import { RegistrationPage } from './pages/registration-page/registration-page';
+import { UserDataContext } from './context/user-data-provider';
 
 export const App = (): JSX.Element => {
   const { setAuthorizationStatus } = useContext(AuthContext);
+  const { setUserData } = useContext(UserDataContext);
 
   useEffect(() => {
     getUserData()
-      .then(() => {
+      .then((data) => {
         setAuthorizationStatus(AuthorizationStatus.Auth);
+        setUserData(data);
       })
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, [setAuthorizationStatus, setUserData]);
 
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupType, setPopupType] = useState(PopupType.None);

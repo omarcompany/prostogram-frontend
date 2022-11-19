@@ -1,5 +1,6 @@
 import { PopupEditAvatar } from '../../pages/main-page/popups/popup-edit-avatar';
 import { PopupEditProfile } from '../../pages/main-page/popups/popup-edit-profile';
+import { PopupNewCard } from '../../pages/main-page/popups/popup-new-card';
 import { PopupRegistrationSuccess } from '../../pages/registration-page/popups/popup-registration-successful';
 import { PopupSomethingWrong } from '../../pages/registration-page/popups/popup-something-wrong';
 import { PopupType } from './popup-type';
@@ -26,6 +27,8 @@ export const PopupManager = ({
       return <PopupRegistrationSuccess onClose={onClose} />;
     case PopupType.SomethingWrong:
       return <PopupSomethingWrong onClose={onClose} />;
+    case PopupType.NewCard:
+      return <PopupNewCard onClose={onClose} />;
     case PopupType.None:
       return null;
     default:
