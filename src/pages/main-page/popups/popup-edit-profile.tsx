@@ -1,17 +1,13 @@
-import { useContext } from 'react';
 import { FormEvent, useRef } from 'react';
 
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
-import { updateProfile } from '../../../action/user';
-import { UserDataContext } from '../../../context/user-data-provider';
+import { updateProfile } from '../../../store/api-action/user';
+import { store } from '../../../store/store';
+import { useAppSelector } from '../../../store/hooks';
 
-export const PopupEditProfile = ({
-  onClose,
-}: {
-  onClose: () => void;
-}): JSX.Element => {
-  const { userData, setUserData } = useContext(UserDataContext);
+export const PopupEditProfile = (): JSX.Element => {
+  const userData = useAppSelector((store) => store.userData);
 
   const nameRef = useRef<HTMLInputElement | null>(null);
   const descriptionRef = useRef<HTMLInputElement | null>(null);
@@ -22,23 +18,14 @@ export const PopupEditProfile = ({
     const name = nameRef.current?.value || '';
     const about = descriptionRef.current?.value || '';
 
-    updateProfile({ name, about })
-      .then((data) => {
-        setUserData(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    onClose();
+    store.dispatch(updateProfile({ name, about }));
   };
 
   return (
     <Popup
       title={'Edit profile'}
       textSubmit={'Save'}
-      onClose={onClose}
-      onSubmit={handleSubmit}
+      submitHandler={handleSubmit}
     >
       <>
         <PopupLabel defaultValue={userData?.name ?? ''} inputRef={nameRef} />

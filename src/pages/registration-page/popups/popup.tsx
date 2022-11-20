@@ -1,11 +1,8 @@
+import { closePopup } from '../../../store/action';
 import { PortalProvider } from '../../../components/popups/portal-provider';
+import { store } from '../../../store/store';
 
-interface IPopupProps {
-  onClose: () => void;
-  children: JSX.Element;
-}
-
-export const Popup = ({ onClose, children }: IPopupProps) => {
+export const Popup = ({ children }: { children: JSX.Element }) => {
   return (
     <PortalProvider>
       <div className="popup-wrapper">
@@ -15,7 +12,7 @@ export const Popup = ({ onClose, children }: IPopupProps) => {
               className="button popup-close-button"
               type="button"
               title="Close"
-              onClick={onClose}
+              onClick={() => store.dispatch(closePopup())}
             ></button>
             {children}
           </div>

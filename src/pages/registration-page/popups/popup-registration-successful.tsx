@@ -1,12 +1,8 @@
 import { Popup } from './popup';
 
-export function PopupRegistrationSuccess({
-  onClose,
-}: {
-  onClose: () => void;
-}): JSX.Element {
+export function PopupRegistrationSuccess(): JSX.Element {
   return (
-    <Popup onClose={onClose}>
+    <Popup>
       <>
         <img
           className="popup-auth-image"

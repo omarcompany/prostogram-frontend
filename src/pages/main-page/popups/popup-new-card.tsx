@@ -1,14 +1,11 @@
 import { FormEvent, useRef } from 'react';
 
-import { createCard } from '../../../action/card';
+import { createCard } from '../../../store/api-action/card';
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
+import { store } from '../../../store/store';
 
-export const PopupNewCard = ({
-  onClose,
-}: {
-  onClose: () => void;
-}): JSX.Element => {
+export const PopupNewCard = (): JSX.Element => {
   const nameRef = useRef<HTMLInputElement | null>(null);
   const imageUrlRef = useRef<HTMLInputElement | null>(null);
 
@@ -18,23 +15,14 @@ export const PopupNewCard = ({
     const name = nameRef.current?.value || '';
     const link = imageUrlRef.current?.value || '';
 
-    createCard(name, link)
-      .then((data) => {
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    onClose();
+    store.dispatch(createCard({ name, link }));
   };
 
   return (
     <Popup
       title={'New place'}
       textSubmit={'Create'}
-      onClose={onClose}
-      onSubmit={handleSubmit}
+      submitHandler={handleSubmit}
     >
       <>
         <PopupLabel defaultValue={'Caribbean Sea'} inputRef={nameRef} />

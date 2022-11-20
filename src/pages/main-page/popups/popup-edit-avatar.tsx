@@ -1,16 +1,13 @@
-import { FormEvent, useContext, useRef } from 'react';
+import { FormEvent, useRef } from 'react';
 
 import { Popup } from './popup';
 import { PopupLabel } from './popup-label';
-import { updateAvatar } from '../../../action/user';
-import { UserDataContext } from '../../../context/user-data-provider';
+import { store } from '../../../store/store';
+import { updateAvatar } from '../../../store/api-action/user';
+import { useAppSelector } from '../../../store/hooks';
 
-export const PopupEditAvatar = ({
-  onClose,
-}: {
-  onClose: () => void;
-}): JSX.Element => {
-  const { userData, setUserData } = useContext(UserDataContext);
+export const PopupEditAvatar = (): JSX.Element => {
+  const userData = useAppSelector((store) => store.userData);
 
   const avatarRef = useRef<HTMLInputElement | null>(null);
 
@@ -18,23 +15,15 @@ export const PopupEditAvatar = ({
     event.preventDefault();
 
     const url = avatarRef.current?.value || '';
-    updateAvatar(url)
-      .then((data) => {
-        setUserData(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
 
-    onClose();
+    store.dispatch(updateAvatar(url));
   };
 
   return (
     <Popup
       title={'Update Avatar'}
       textSubmit={'Save'}
-      onClose={onClose}
-      onSubmit={handleSubmit}
+      submitHandler={handleSubmit}
       children={
         <PopupLabel
           defaultValue={userData?.avatar ?? ''}
