@@ -1,32 +1,19 @@
-import { Navigate, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
 
 import { Auth } from '../../../components/auth';
-import { AuthContext } from '../../../context/auth-provider';
 import { AppRoute, AuthorizationStatus } from '../../../const';
-import { PopupType } from '../../../components/popups/popup-type';
-import { saveToken } from '../../../services/token';
-import { singIn } from '../../../action/login';
+import { singIn } from '../../../store/api-action/login';
 import { submitAuthMethod } from '../../../types';
+import { store } from '../../../store/store';
+import { useAppSelector } from '../../../store/hooks';
 
-export const Login = ({
-  openPopup,
-}: {
-  openPopup: (popupType: PopupType) => void;
-}): JSX.Element => {
-  const navigate = useNavigate();
-  const {authorizationStatus, setAuthorizationStatus } = useContext(AuthContext);
+export const Login = (): JSX.Element => {
+  const authorizationStatus = useAppSelector(
+    (store) => store.authorizationStatus
+  );
 
   const handleSubmit: submitAuthMethod = (event, email, password) => {
-    singIn({ email, password })
-      .then((result) => {
-        saveToken(result.data.token);
-        setAuthorizationStatus(AuthorizationStatus.Auth);
-        navigate(AppRoute.Main);
-      })
-      .catch((error) => {
-        openPopup(PopupType.SomethingWrong);
-      });
+    store.dispatch(singIn({ email, password }));
   };
 
   return authorizationStatus === AuthorizationStatus.Auth ? (

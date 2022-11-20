@@ -1,28 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 import { Auth } from '../../../components/auth';
 import { AppRoute } from '../../../const';
-import { PopupType } from '../../../components/popups/popup-type';
-import { singUp } from '../../../action/registration';
+import { singUp } from '../../../store/api-action/registration';
 import { submitAuthMethod } from '../../../types';
+import { store } from '../../../store/store';
 
-export const Registration = ({
-  openPopup,
-}: {
-  openPopup: (popupType: PopupType) => void;
-}): JSX.Element => {
-  const navigate = useNavigate();
-
+export const Registration = (): JSX.Element => {
   const handleSubmit: submitAuthMethod = (event, email, password) => {
-    singUp({ email, password })
-      .then(() => {
-        navigate(AppRoute.Login);
-        openPopup(PopupType.RegistrationSuccess);
-      })
-      .catch((error) => {
-        openPopup(PopupType.SomethingWrong);
-      });
+    store.dispatch(singUp({ email, password }));
   };
 
   return (

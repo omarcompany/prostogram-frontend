@@ -1,24 +1,20 @@
-import { useContext } from 'react';
-
 import { PopupType } from '../../../components/popups/popup-type';
-import { UserDataContext } from '../../../context/user-data-provider';
+import { openPopup } from '../../../store/action';
+import { useAppSelector } from '../../../store/hooks';
+import { store } from '../../../store/store';
 
-export const Profile = ({
-  openPopup,
-}: {
-  openPopup: (popupType: PopupType) => void;
-}) => {
-  const { userData } = useContext(UserDataContext);
+export const Profile = () => {
+  const userData = useAppSelector((store) => store.userData);
 
   const editAvatarClickHandler = () => {
-    openPopup(PopupType.EditAvatar);
+    store.dispatch(openPopup(PopupType.EditAvatar));
   };
   const editProfileClickHandler = () => {
-    openPopup(PopupType.EditProfile);
+    store.dispatch(openPopup(PopupType.EditProfile));
   };
 
   const addNewCardClickHandler = () => {
-    openPopup(PopupType.NewCard);
+    store.dispatch(openPopup(PopupType.NewCard));
   };
 
   return (

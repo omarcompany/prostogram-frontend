@@ -1,15 +1,16 @@
-import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { AuthContext } from '../../context/auth-provider';
+import { useAppSelector } from '../../store/hooks';
 
 export const PrivateRoute = ({
   children,
 }: {
   children: JSX.Element;
 }): JSX.Element => {
-  const { authorizationStatus } = useContext(AuthContext);
+  const authorizationStatus = useAppSelector(
+    (store) => store.authorizationStatus
+  );
 
   return authorizationStatus === AuthorizationStatus.Auth ? (
     children

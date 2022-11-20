@@ -1,12 +1,8 @@
 import { Popup } from './popup';
 
-export const PopupSomethingWrong = ({
-  onClose,
-}: {
-  onClose: () => void;
-}): JSX.Element => {
+export const PopupSomethingWrong = (): JSX.Element => {
   return (
-    <Popup onClose={onClose}>
+    <Popup>
       <>
         <img
           className="popup-auth-image"

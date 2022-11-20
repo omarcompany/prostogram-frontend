@@ -1,0 +1,45 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { adaptUserDataToClient } from '../../adapter';
+import { api, store } from '../store';
+import { AuthorizationStatus } from '../../const';
+import { setAuthStatus, setUserData } from '../action';
+
+export const getUserData = createAsyncThunk('user/getUserData', async () => {
+  try {
+    const result = await api.get('/user/me');
+    store.dispatch(setAuthStatus(AuthorizationStatus.Auth));
+    store.dispatch(setUserData(adaptUserDataToClient(result.data)));
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export const updateProfile = createAsyncThunk(
+  'user/updateProfile',
+  async ({ name, about }: { name: string; about: string }) => {
+    try {
+      const result = await api.patch('/user/me', {
+        name,
+        about,
+      });
+      store.dispatch(setUserData(adaptUserDataToClient(result.data)));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  '/user/updateAvatar',
+  async (avatar: string) => {
+    try {
+      const result = await api.patch('/user/me/avatar', {
+        avatar,
+      });
+      store.dispatch(setUserData(adaptUserDataToClient(result.data)));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
