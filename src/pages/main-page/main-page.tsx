@@ -4,6 +4,7 @@ import { Main } from './components/main';
 
 export const MainPage = (): JSX.Element => {
   return (
+    
     <>
       <MainHeader />
 

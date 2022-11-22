@@ -2,12 +2,14 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import { AuthorizationStatus } from '../const';
 import { Cards } from '../types';
+import { ICard } from '../interfaces/interfases';
 import { IUserData } from '../interfaces';
 import {
   closePopup,
   openPopup,
   setAuthStatus,
   setCards,
+  setSelectedCard,
   setUserData,
 } from './action';
 import { PopupType } from '../components/popups/popup-type';
@@ -18,6 +20,7 @@ interface IInitialState {
   cards: Cards;
   popupOpened: boolean;
   popupType: PopupType;
+  selectedCard: ICard | null;
 }
 
 const initialState: IInitialState = {
@@ -26,6 +29,7 @@ const initialState: IInitialState = {
   cards: [],
   popupOpened: false,
   popupType: PopupType.None,
+  selectedCard: null,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -44,5 +48,8 @@ export const reducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(closePopup, (state, action) => {
     state.popupOpened = false;
+  });
+  builder.addCase(setSelectedCard, (state, action) => {
+    state.selectedCard = action.payload;
   });
 });

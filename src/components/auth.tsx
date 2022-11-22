@@ -74,6 +74,7 @@ export const Auth = ({
             id="email"
             name="registration_form_email"
             placeholder="Email"
+            required
             ref={emailRef}
             onChange={handleEmailChange}
           />
@@ -86,6 +87,7 @@ export const Auth = ({
             id="password"
             name="registration_form_password"
             placeholder="Password"
+            required
             ref={passwordRef}
             onChange={handlePasswordChange}
           />

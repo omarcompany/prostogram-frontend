@@ -8,7 +8,7 @@ interface IPopupProps {
   title: string;
   textSubmit: string;
   submitHandler: (event: FormEvent<HTMLFormElement>) => void;
-  children: JSX.Element;
+  children?: JSX.Element;
 }
 
 export function Popup({

@@ -1,10 +1,12 @@
+import { PopupDeleteCard } from '../../pages/main-page/popups/popup-delete-card';
 import { PopupEditAvatar } from '../../pages/main-page/popups/popup-edit-avatar';
 import { PopupEditProfile } from '../../pages/main-page/popups/popup-edit-profile';
 import { PopupNewCard } from '../../pages/main-page/popups/popup-new-card';
+import { PopupProhibited } from './popup-prohibited';
 import { PopupRegistrationSuccess } from '../../pages/registration-page/popups/popup-registration-successful';
-import { PopupSomethingWrong } from '../../pages/registration-page/popups/popup-something-wrong';
-import { useAppSelector } from '../../store/hooks';
+import { PopupSomethingWrong } from './popup-something-wrong';
 import { PopupType } from './popup-type';
+import { useAppSelector } from '../../store/hooks';
 
 export const PopupManager = (): JSX.Element | null => {
   const { isOpen, popupType } = useAppSelector((store) => ({
@@ -25,6 +27,10 @@ export const PopupManager = (): JSX.Element | null => {
       return <PopupSomethingWrong />;
     case PopupType.NewCard:
       return <PopupNewCard />;
+    case PopupType.DeleteCard:
+      return <PopupDeleteCard />;
+    case PopupType.Prohibited:
+      return <PopupProhibited />;
     case PopupType.None:
       return null;
     default:

@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { adaptUserDataToClient } from '../../adapter';
 import { api, store } from '../store';
 import { AuthorizationStatus } from '../../const';
+import { handleError } from '../../services/handle-error';
 import { setAuthStatus, setUserData } from '../action';
 
 export const getUserData = createAsyncThunk('user/getUserData', async () => {
@@ -11,7 +12,7 @@ export const getUserData = createAsyncThunk('user/getUserData', async () => {
     store.dispatch(setAuthStatus(AuthorizationStatus.Auth));
     store.dispatch(setUserData(adaptUserDataToClient(result.data)));
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 });
 
@@ -25,7 +26,7 @@ export const updateProfile = createAsyncThunk(
       });
       store.dispatch(setUserData(adaptUserDataToClient(result.data)));
     } catch (error) {
-      console.log(error);
+      handleError(error);
     }
   }
 );
@@ -39,7 +40,7 @@ export const updateAvatar = createAsyncThunk(
       });
       store.dispatch(setUserData(adaptUserDataToClient(result.data)));
     } catch (error) {
-      console.log(error);
+      handleError(error);
     }
   }
 );

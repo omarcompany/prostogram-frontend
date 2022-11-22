@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
 
 import { AppRoute } from './const';
 import { getUserData } from './store/api-action/user';
@@ -14,11 +13,9 @@ import { store } from './store/store';
 import browserHistory from './browser-history';
 import HistoryRouter from './components/history-router.tsx/history-router';
 
-export const App = (): JSX.Element => {
-  useEffect(() => {
-    store.dispatch(getUserData());
-  }, []);
+store.dispatch(getUserData());
 
+export const App = (): JSX.Element => {
   return (
     <>
       <PopupManager
