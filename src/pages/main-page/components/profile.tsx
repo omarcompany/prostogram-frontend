@@ -9,6 +9,7 @@ export const Profile = () => {
   const editAvatarClickHandler = () => {
     store.dispatch(openPopup(PopupType.EditAvatar));
   };
+
   const editProfileClickHandler = () => {
     store.dispatch(openPopup(PopupType.EditProfile));
   };

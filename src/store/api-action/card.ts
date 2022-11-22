@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { adaptCardsToClient } from '../../adapter';
 import { api, store } from '../store';
+import { handleError } from '../../services/handle-error';
 import { setCards } from '../action';
 
 export const createCard = createAsyncThunk(
@@ -14,7 +15,7 @@ export const createCard = createAsyncThunk(
       });
       store.dispatch(getCards());
     } catch (error) {
-      console.log(error);
+      handleError(error);
     }
   }
 );
@@ -25,6 +26,18 @@ export const getCards = createAsyncThunk('cards/getCards', async () => {
     const userId = store.getState().userData?.id ?? '';
     store.dispatch(setCards(adaptCardsToClient(result.data, userId)));
   } catch (error) {
-    console.log(error);
+    handleError(error);
   }
 });
+
+export const deleteCard = createAsyncThunk(
+  '/cards/deleteCard',
+  async (id: string) => {
+    try {
+      await api.delete(`/cards/${id}`);
+      store.dispatch(getCards());
+    } catch (error) {
+      handleError(error);
+    }
+  }
+);

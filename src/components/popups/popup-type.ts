@@ -4,5 +4,7 @@ export enum PopupType {
   RegistrationSuccess,
   SomethingWrong,
   NewCard,
+  DeleteCard,
+  Prohibited,
   None,
 }

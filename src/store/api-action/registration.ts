@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { api, store } from '../store';
 import { AppRoute } from '../../const';
+import { handleError } from '../../services/handle-error';
 import { openPopup, redirectToRoute } from '../action';
 import { PopupType } from '../../components/popups/popup-type';
 
@@ -17,7 +18,7 @@ export const singUp = createAsyncThunk(
       store.dispatch(openPopup(PopupType.RegistrationSuccess));
     } catch (error) {
       store.dispatch(openPopup(PopupType.SomethingWrong));
-      console.log(error);
+      handleError(error);
     }
   }
 );

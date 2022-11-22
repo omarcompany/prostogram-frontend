@@ -1,4 +1,4 @@
-import { Popup } from './popup';
+import { Popup } from '../../pages/registration-page/popups/popup';
 
 export const PopupSomethingWrong = (): JSX.Element => {
   return (
