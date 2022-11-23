@@ -41,3 +41,27 @@ export const deleteCard = createAsyncThunk(
     }
   }
 );
+
+export const likeCard = createAsyncThunk(
+  '/cards/likeCard',
+  async (id: string) => {
+    try {
+      await api.put(`/cards/${id}/likes`);
+      store.dispatch(getCards());
+    } catch (error) {
+      handleError(error);
+    }
+  }
+);
+
+export const dislikeCard = createAsyncThunk(
+  '/cards/dislikeCard',
+  async (id: string) => {
+    try {
+      await api.delete(`/cards/${id}/likes`);
+      store.dispatch(getCards());
+    } catch (error) {
+      handleError(error);
+    }
+  }
+);
