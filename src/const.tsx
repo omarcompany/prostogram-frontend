@@ -16,3 +16,5 @@ export enum HttpCode {
   Forbidden = 403,
   NotFound = 404,
 }
+
+export const BACKEND_URL = 'http://78.24.219.233:3000/';
