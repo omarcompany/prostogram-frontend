@@ -58,6 +58,17 @@ button:active {
   line-height: 1.22;
 }
 
+.logout-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  outline: inherit;
+
+  font-size: 18px;
+  line-height: 1.22;
+}
+
 .header-line {
   height: 0px;
 
