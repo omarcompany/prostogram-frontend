@@ -1,5 +1,4 @@
 import { PopupDeleteCard } from '../../pages/main-page/popups/popup-delete-card';
-import { PopupEditAvatar } from '../../pages/main-page/popups/popup-edit-avatar';
 import { PopupEditProfile } from '../../pages/main-page/popups/popup-edit-profile';
 import { PopupNewCard } from '../../pages/main-page/popups/popup-new-card';
 import { PopupProhibited } from './popup-prohibited';
@@ -17,8 +16,6 @@ export const PopupManager = (): JSX.Element | null => {
   if (!isOpen) return null;
 
   switch (popupType) {
-    case PopupType.EditAvatar:
-      return <PopupEditAvatar />;
     case PopupType.EditProfile:
       return <PopupEditProfile />;
     case PopupType.RegistrationSuccess:

@@ -12,7 +12,7 @@ export const getUserData = createAsyncThunk('user/getUserData', async () => {
     store.dispatch(setAuthStatus(AuthorizationStatus.Auth));
     store.dispatch(setUserData(adaptUserDataToClient(result.data)));
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 });
 
@@ -33,11 +33,11 @@ export const updateProfile = createAsyncThunk(
 
 export const updateAvatar = createAsyncThunk(
   '/user/updateAvatar',
-  async (avatar: string) => {
+  async (file: File) => {
     try {
-      const result = await api.patch('/user/me/avatar', {
-        avatar,
-      });
+      const formData = new FormData();
+      formData.append('file', file);
+      const result = await api.patch('/user/me/avatar', formData);
       store.dispatch(setUserData(adaptUserDataToClient(result.data)));
     } catch (error) {
       handleError(error);

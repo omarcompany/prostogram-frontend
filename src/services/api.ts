@@ -1,7 +1,8 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+
+import { BACKEND_URL } from '../const';
 import { getToken } from './token';
 
-const BACKEND_URL = 'http://78.24.219.233:3000/';
 const REQUEST_TIMEOUT = 5000;
 
 export const createAPI = (): AxiosInstance => {

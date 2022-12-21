@@ -1,13 +1,18 @@
-import { PopupType } from '../../../components/popups/popup-type';
+import { BACKEND_URL } from '../../../const';
 import { openPopup } from '../../../store/action';
-import { useAppSelector } from '../../../store/hooks';
+import { PopupType } from '../../../components/popups/popup-type';
 import { store } from '../../../store/store';
+import { updateAvatar } from '../../../store/api-action/user';
+import { useAppSelector } from '../../../store/hooks';
 
 export const Profile = () => {
   const userData = useAppSelector((store) => store.userData);
 
-  const editAvatarClickHandler = () => {
-    store.dispatch(openPopup(PopupType.EditAvatar));
+  const selectAvatarHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files) {
+      store.dispatch(updateAvatar(files[0]));
+    }
   };
 
   const editProfileClickHandler = () => {
@@ -18,18 +23,27 @@ export const Profile = () => {
     store.dispatch(openPopup(PopupType.NewCard));
   };
 
+  const avatarUrl = userData?.avatar
+    ? `${BACKEND_URL}/${userData.avatar}`
+    : './images/default-avatar.jpg';
+
   return (
     <section className="profile">
-      <div className="avatar" onClick={editAvatarClickHandler}>
-        <img
-          className="avatar-image"
-          src={userData?.avatar ?? '-'}
-          alt="avatar"
-        />
-        <img
-          className="avatar-edit-icon"
-          alt="avatar edit icon"
-          src="images/pencil.png"
+      <div className="avatar">
+        <img className="avatar-image" src={avatarUrl} alt="avatar" />
+        <label htmlFor="avatar-input">
+          <img
+            className="avatar-edit-icon"
+            alt="avatar edit icon"
+            src="images/pencil.png"
+          />
+        </label>
+        <input
+          className="avatar-edit-input"
+          id="avatar-input"
+          type="file"
+          accept="image/*"
+          onChange={selectAvatarHandler}
         />
       </div>
       <div className="profile-info">
