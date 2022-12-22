@@ -17,4 +17,4 @@ export enum HttpCode {
   NotFound = 404,
 }
 
-export const BACKEND_URL = 'http://78.24.219.233:3000/';
+export const BACKEND_URL = 'http://localhost:3000';

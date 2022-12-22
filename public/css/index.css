@@ -535,6 +535,16 @@ button:active {
   text-align: center;
 }
 
+.new-card-label {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.new-card-input {
+  display: none;
+}
+
+
 @media screen and (max-width: 1078px) {
   .auth {
     margin-top: 40px;

@@ -1,4 +1,5 @@
 import { PopupType } from '../../../components/popups/popup-type';
+import { BACKEND_URL } from '../../../const';
 
 import { ICard } from '../../../interfaces/interfases';
 import { openPopup, setSelectedCard } from '../../../store/action';
@@ -6,7 +7,7 @@ import { dislikeCard, likeCard } from '../../../store/api-action/card';
 import { store } from '../../../store/store';
 
 export const Card = ({ card }: { card: ICard }): JSX.Element => {
-  const { id, name, url, liked, counter } = card;
+  const { id, name, urn, liked, counter } = card;
 
   const handleDeleteClick = () => {
     store.dispatch(setSelectedCard(card));
@@ -25,7 +26,7 @@ export const Card = ({ card }: { card: ICard }): JSX.Element => {
 
   return (
     <li className="element">
-      <img className="element-image" src={url} alt={`${name}_${id}`} />
+      <img className="element-image" src={`${BACKEND_URL}/${urn}`} alt={`${name}_${id}`} />
       <img
         id="trash"
         alt="trash icon"

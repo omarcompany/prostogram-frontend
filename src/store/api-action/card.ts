@@ -5,14 +5,19 @@ import { api, store } from '../store';
 import { handleError } from '../../services/handle-error';
 import { setCards } from '../action';
 
+interface INewCard {
+  name: string;
+  file: File;
+}
+
 export const createCard = createAsyncThunk(
   '/cards/createCard',
-  async ({ name, link }: { name: string; link: string }) => {
+  async ({ name, file }: INewCard) => {
     try {
-      await api.post('/cards', {
-        name,
-        link,
-      });
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('name', name);
+      await api.post('/cards', formData);
       store.dispatch(getCards());
     } catch (error) {
       handleError(error);

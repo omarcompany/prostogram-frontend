@@ -3,14 +3,10 @@ export interface IProfileInfo {
   description: string;
 }
 
-export interface IAvatarInfo {
-  url: string;
-}
-
 export interface ICard {
   id: string;
   name: string;
-  url: string;
+  urn: string;
   counter: number;
   liked: boolean;
 }
@@ -18,7 +14,7 @@ export interface ICard {
 export interface ICardServer {
   _id: string;
   name: string;
-  link: string;
+  urn: string;
   createdAt: string;
   owner: string;
   likes: string[];
