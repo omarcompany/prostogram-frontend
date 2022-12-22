@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 
 import { createCard } from '../../../store/api-action/card';
 import { Popup } from './popup';
@@ -6,16 +6,27 @@ import { PopupLabel } from './popup-label';
 import { store } from '../../../store/store';
 
 export const PopupNewCard = (): JSX.Element => {
+  const [file, setFile] = useState<File | null>(null);
+  const [fileName, setFileName] = useState<string>('Choose a file...');
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files) {
+      const file = files[0];
+      setFile(file);
+      setFileName(file.name);
+    }
+  };
+
   const nameRef = useRef<HTMLInputElement | null>(null);
-  const imageUrlRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const name = nameRef.current?.value || '';
-    const link = imageUrlRef.current?.value || '';
-
-    store.dispatch(createCard({ name, link }));
+    if (file) {
+      store.dispatch(createCard({ name, file }));
+    }
   };
 
   return (
@@ -26,12 +37,16 @@ export const PopupNewCard = (): JSX.Element => {
     >
       <>
         <PopupLabel defaultValue={'Caribbean Sea'} inputRef={nameRef} />
-        <PopupLabel
-          defaultValue={
-            'https://www.globalchange.gov/sites/globalchange/files/ph-caribbean.jpg'
-          }
-          inputRef={imageUrlRef}
-        />
+        <label className="new-card-label">
+          <input
+            className="new-card-input"
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            required
+          />
+          {fileName}
+        </label>
       </>
     </Popup>
   );

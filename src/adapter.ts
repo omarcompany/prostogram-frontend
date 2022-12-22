@@ -19,7 +19,7 @@ export const adaptCardToClient = (card: ICardServer, userId: string): ICard => {
   return {
     id: card._id,
     name: card.name,
-    url: card.link,
+    urn: card.urn,
     counter,
     liked,
   };
