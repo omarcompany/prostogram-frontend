@@ -21,3 +21,11 @@ export const openPopup = createAction<PopupType>('global/openPopup');
 export const closePopup = createAction<void>('global/closePopup');
 
 export const setSelectedCard = createAction<ICard>('global/selectedCard');
+
+export const addCard = createAction<ICard>('/cards/addCard');
+
+export const removeCardFromStore = createAction<string>(
+  '/cards/removeCardFromStore'
+);
+
+export const onCardChange = createAction<ICard>('/cards/changeCard');
