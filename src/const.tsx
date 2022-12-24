@@ -1,3 +1,5 @@
+import config from '../config.json';
+
 export enum AppRoute {
   Main = '/',
   Registration = '/signup',
@@ -17,4 +19,4 @@ export enum HttpCode {
   NotFound = 404,
 }
 
-export const BACKEND_URL = 'http://localhost:3000';
+export const BACKEND_URL = config.SERVER_URL;
