@@ -8,8 +8,7 @@ export const getToken = (): Token => {
 };
 
 export const saveToken = (token: Token): void => {
-  const prostogramToken = `Bearer ${token}`;
-  localStorage.setItem(AUTH_TOKEN_KEY_NAME, prostogramToken);
+  localStorage.setItem(AUTH_TOKEN_KEY_NAME, token);
 };
 
 export const dropToken = (): void => {

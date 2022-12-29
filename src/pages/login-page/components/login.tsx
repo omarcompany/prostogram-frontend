@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom';
 
 import { Auth } from '../../../components/auth';
 import { AppRoute, AuthorizationStatus } from '../../../const';
-import { singIn } from '../../../store/api-action/login';
+import { signIn } from '../../../store/api-action/login';
 import { submitAuthMethod } from '../../../types';
 import { store } from '../../../store/store';
 import { useAppSelector } from '../../../store/hooks';
@@ -13,7 +13,7 @@ export const Login = (): JSX.Element => {
   );
 
   const handleSubmit: submitAuthMethod = (event, email, password) => {
-    store.dispatch(singIn({ email, password }));
+    store.dispatch(signIn({ email, password }));
   };
 
   return authorizationStatus === AuthorizationStatus.Auth ? (

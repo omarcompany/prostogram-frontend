@@ -10,6 +10,9 @@ export function PopupRegistrationSuccess(): JSX.Element {
           alt="registration success"
         />
         <p className="popup-auth-message">Registration successful!</p>
+        <p className="popup-auth-message-description">
+          Please click the activation link we sent to your email
+        </p>
       </>
     </Popup>
   );

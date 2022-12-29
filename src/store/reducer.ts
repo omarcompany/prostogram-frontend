@@ -1,7 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 import { AuthorizationStatus } from '../const';
-import { Cards } from '../types';
 import { ICard } from '../interfaces/interfases';
 import { IUserData } from '../interfaces';
 import {
@@ -20,7 +19,7 @@ import { PopupType } from '../components/popups/popup-type';
 interface IInitialState {
   authorizationStatus: AuthorizationStatus;
   userData: IUserData | null;
-  cards: Cards;
+  cards: Array<ICard>;
   popupOpened: boolean;
   popupType: PopupType;
   selectedCard: ICard | null;

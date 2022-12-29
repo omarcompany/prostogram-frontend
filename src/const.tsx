@@ -20,3 +20,5 @@ export enum HttpCode {
 }
 
 export const BACKEND_URL = config.SERVER_URL;
+
+export const TOKEN_TYPE = 'Bearer ';
