@@ -5,19 +5,16 @@ import { AppRoute } from '../../const';
 import { handleError } from '../../services/handle-error';
 import { openPopup, redirectToRoute } from '../action';
 import { PopupType } from '../../components/popups/popup-type';
+import { IAuthData, IDefaultUserServer } from '../../interfaces';
 
 export const singUp = createAsyncThunk(
   'signup',
-  async ({ email, password }: { email: string; password: string }) => {
+  async (authData: IAuthData) => {
     try {
-      await api.post<string>('/signup', {
-        email,
-        password,
-      });
+      await api.post<IDefaultUserServer>('/signup', authData);
       store.dispatch(redirectToRoute(AppRoute.Login));
       store.dispatch(openPopup(PopupType.RegistrationSuccess));
     } catch (error) {
-      store.dispatch(openPopup(PopupType.SomethingWrong));
       handleError(error);
     }
   }

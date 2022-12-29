@@ -5,7 +5,7 @@ import { openPopup } from '../store/action';
 import { PopupType } from '../components/popups/popup-type';
 import { store } from '../store/store';
 
-export const handleError = (error: unknown): void => {
+export const handleError = (error: unknown, showPopup = true): void => {
   if (!request.isAxiosError(error)) {
     throw error;
   }
@@ -18,13 +18,13 @@ export const handleError = (error: unknown): void => {
         console.log(response.data.error);
         break;
       case HttpCode.Unauthorized:
-        store.dispatch(openPopup(PopupType.SomethingWrong));
+        showPopup && store.dispatch(openPopup(PopupType.SomethingWrong));
         break;
       case HttpCode.NotFound:
         console.log(response.data.error);
         break;
       case HttpCode.Forbidden:
-        store.dispatch(openPopup(PopupType.Prohibited));
+        showPopup && store.dispatch(openPopup(PopupType.Prohibited));
         break;
     }
   }

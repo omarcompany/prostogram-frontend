@@ -1,18 +1,17 @@
 import { createAction } from '@reduxjs/toolkit';
 
 import { AppRoute, AuthorizationStatus } from '../const';
-import { Cards } from '../types';
-import { ICard } from '../interfaces/interfases';
 import { IUserData } from '../interfaces';
+import { ICard } from '../interfaces/interfases';
 import { PopupType } from '../components/popups/popup-type';
 
 export const setAuthStatus = createAction<AuthorizationStatus>(
   'global/setAuthStatus'
 );
 
-export const setUserData = createAction<IUserData>('user/setUserData');
+export const setUserData = createAction<IUserData | null>('user/setUserData');
 
-export const setCards = createAction<Cards>('cards/setCards');
+export const setCards = createAction<Array<ICard>>('cards/setCards');
 
 export const redirectToRoute = createAction<AppRoute>('global/redirectToRoute');
 
