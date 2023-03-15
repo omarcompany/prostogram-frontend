@@ -8,7 +8,7 @@ export const LoginHeader = (): JSX.Element => {
     <Header
       children={
         <Link
-          className="auth-header-link header-link"
+          className="auth-header-link header-link button"
           to={AppRoute.Registration}
           target="_top"
           rel="noopener noreferrer"
