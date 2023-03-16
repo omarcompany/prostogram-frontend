@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && scp -r ./build/* elevon-server@78.24.219.233:/var/www/www-root/data/www/prostogram.fvds.ru"
+    "deploy": "npm run build && scp -r ./build/* elevon-team@188.120.250.232:/var/www/www-root/data/www/prostogram.fvds.ru"
   },
   "eslintConfig": {
     "extends": [
